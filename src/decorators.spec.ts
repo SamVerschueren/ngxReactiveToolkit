@@ -52,15 +52,6 @@ describe('on Destroy decorator', () => {
         expect(instance1DestroyResults).toEqual([true]);
         expect(instance2DestroyResults).toEqual([]);
     });
-    describe('given the ngOnDestroy is not implemented', () => {
-        it('should throw an error', () => {
-            expect(() => {
-                class MyComponent {
-                    @Destroy() destroy$;
-                }
-            }).toThrowError('ngOnDestroy must be implemented for MyComponent');
-        });
-    });
     describe('given we try to set the value of destroy$ ourselves', () => {
         it('should throw an error', () => {
             expect(() => {
@@ -78,15 +69,6 @@ describe('on Destroy decorator', () => {
 });
 
 describe('on Changes decorator', () => {
-    describe('given the ngOnChanges function is not implemented', () => {
-        it('should throw an error', () => {
-            expect(() => {
-                class MyComponent {
-                    @Changes() changes$;
-                }
-            }).toThrowError('ngOnChanges must be implemented for MyComponent');
-        });
-    });
     describe('given there is no key specified', () => {
         it('should have created a changes stream that contains the changes of all inputs and still' +
             'executes the old ngOnchanges function', () => {

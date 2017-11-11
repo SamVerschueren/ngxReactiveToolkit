@@ -26,9 +26,6 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 export function Destroy() {
     return function(target: any, key: string) {
         const oldNgOnDestroy = target.constructor.prototype.ngOnDestroy;
-        if (!oldNgOnDestroy) {
-            throw new Error(`ngOnDestroy must be implemented for ${target.constructor.name}`);
-        }
 
         const accessor = `${key}$`;
         const secret = `_${key}$`;
@@ -86,9 +83,6 @@ export function Changes(inputProp?: string) {
                 .map(changes => changes[inputProp].currentValue) : subject;
         }
         const oldNgOnChanges = target.constructor.prototype.ngOnChanges;
-        if (!oldNgOnChanges) {
-            throw new Error(`ngOnChanges must be implemented for ${target.constructor.name}`);
-        }
 
         const accessor = `${key}$`;
         const secret = `_${key}$`;
